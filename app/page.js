@@ -1,69 +1,262 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useEffect, useState } from "react";
+import { Inter } from "next/font/google";
+import styles from "./page.module.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-sans",
+});
+
+// Edit this array with real bios / achievements whenever you're ready.
+// Drop matching photos into /public/team/ using the filenames below
+// (square images, ~800x800, work best).
+//
+// `website` is optional — if set, an extra link shows next to LinkedIn.
+const team = [
+  {
+    no: "001",
+    name: "Verity Boyd",
+    role: "Project Manager, Backend Developer",
+    tag: "DATABASE",
+    photo: "/team/verity_pf.png",
+    blurb:
+      "Kept the backend roadmap honest, tracking tickets, timelines, and making sure the pieces landed in the right order.",
+    bio:
+      "Kept the backend roadmap honest, tracking tickets, timelines, and making sure the pieces landed in the right order.\n\nI'm a software developer graduating from SAIT in August 2026, transitioning into tech after building a career across financial services, non-profit arts, and client-experience roles. That path shaped how I work today: with strong communication, collaboration, time-management, and stakeholder-focused problem-solving at the core.\n\nIn development, I bring solid technical fundamentals in object-oriented programming, front and backend development, relational databases, SQL, cloud computing, DevOps practices, IoT concepts, and modern AI workflows — including responsible AI and agentic AI. I'm especially interested in enterprise applications and building solutions that improve reliability, clarity, and the human experience overall.\n\nCurious, adaptable, and detail-driven, I'm excited to grow my career in environments where technology, teamwork, and thoughtful design come together to create meaningful impact.",
+    linkedin: "https://www.linkedin.com/in/verityb/",
+    website: "https://verityboyd.vercel.app/",
+  },
+  {
+    no: "002",
+    name: "Aurora Choban",
+    role: "Frontend Developer",
+    tag: "INTERFACE",
+    photo: "/team/aurora.jpg",
+    blurb:
+      "Shaped what the archive looked and felt like for users, from the screens and search functionality to the overall day-to-day experience of the archive.",
+    bio:
+      "Shaped what the archive looked and felt like for users, from the screens and search functionality to the overall day-to-day experience of the archive.",
+    linkedin: "https://www.linkedin.com/in/aurora-choban-818a2334a/",
+    website: null,
+  },
+  {
+    no: "003",
+    name: "Dylan Khuu",
+    role: "Backend Developer",
+    tag: "SERVICES",
+    photo: "/team/dylan_pf.jpg",
+    blurb:
+      "Developed the gateway and Reports Service, implementing the necessary models, controllers, DTOs, and supporting backend components.",
+    bio:
+      "Developed the gateway and Reports Service, implementing the necessary models, controllers, DTOs, and supporting backend components.",
+    linkedin: "https://www.linkedin.com/in/dylan-khuu/",
+    website: null,
+  },
+  {
+    no: "004",
+    name: "Jenna Hackett",
+    role: "Cloud & AI Architect",
+    tag: "CLOUD / AI",
+    photo: "/team/jenna_pf.jpg",
+    blurb:
+      "Designed how the system communicated internally and with Azure, covering routing, infrastructure, and AI service.",
+    bio:
+      "Designed how the system communicated internally and with Azure, covering routing, infrastructure, and AI service.",
+    linkedin: "https://www.linkedin.com/in/jenna-hackett-673981161/",
+    website: null,
+  },
+];
+
+function MemberPhoto({ member, className, fallbackClassName }) {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={member.photo}
+        alt={member.name}
+        className={className}
+        onError={(e) => {
+          e.currentTarget.style.display = "none";
+          e.currentTarget.nextSibling.style.display = "flex";
+        }}
+      />
+      <div className={fallbackClassName}>
+        {member.name
+          .split(" ")
+          .map((w) => w[0])
+          .join("")}
+      </div>
+    </>
+  );
+}
+
+function TeamCard({ member, onOpen }) {
+  return (
+    <article className={styles.card}>
+      <div className={styles.photoFrame}>
+        <MemberPhoto
+          member={member}
+          className={styles.photo}
+          fallbackClassName={styles.photoFallback}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.js
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+      </div>
+
+      <div className={styles.cardBody}>
+        <span className={styles.tag}>{member.tag}</span>
+        <h2 className={styles.name}>{member.name}</h2>
+        <p className={styles.role}>{member.role}</p>
+        <p className={styles.blurb}>{member.blurb}</p>
+
+        <button
+          type="button"
+          className={styles.readMore}
+          onClick={() => onOpen(member)}
+        >
+          More about {member.name.split(" ")[0]} ↗
+        </button>
+
+        <div className={styles.cardFooter}>
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href={member.linkedin}
             target="_blank"
             rel="noopener noreferrer"
+            className={styles.linkedin}
+            onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
+            LinkedIn ↗
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+          {member.website && (
+            <a
+              href={member.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.linkedin}
+              onClick={(e) => e.stopPropagation()}
+            >
+              Website ↗
+            </a>
+          )}
         </div>
-      </main>
+      </div>
+    </article>
+  );
+}
+
+function MemberModal({ member, onClose }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className={styles.modalBackdrop}
+      onClick={onClose}
+      role="presentation"
+    >
+      <div
+        className={styles.modal}
+        role="dialog"
+        aria-modal="true"
+        aria-label={member.name}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          type="button"
+          className={styles.modalClose}
+          onClick={onClose}
+          aria-label="Close"
+        >
+          ✕
+        </button>
+
+        <div className={styles.modalPhotoFrame}>
+          <MemberPhoto
+            member={member}
+            className={styles.modalPhoto}
+            fallbackClassName={styles.modalPhotoFallback}
+          />
+        </div>
+
+        <div className={styles.modalBody}>
+          <span className={styles.tag}>{member.tag}</span>
+          <h2 className={styles.modalName}>{member.name}</h2>
+          <p className={styles.role}>{member.role}</p>
+
+          {member.bio ? (
+            <div className={styles.modalBio}>
+              {member.bio.split("\n\n").map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          ) : (
+            <p className={styles.modalBlurb}>{member.blurb}</p>
+          )}
+
+          <div className={styles.cardFooter}>
+            <a
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.linkedin}
+            >
+              LinkedIn ↗
+            </a>
+
+            {member.website && (
+              <a
+                href={member.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.linkedin}
+              >
+                Website ↗
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
+  );
+}
+
+export default function Page() {
+  const [activeMember, setActiveMember] = useState(null);
+
+  return (
+    <main className={`${styles.page} ${inter.variable}`}>
+      <header className={styles.hero}>
+        <h1 className={styles.title}>
+          <span className={styles.titleAccent}>WAYFINDER KIOSK</span>
+        </h1>
+        <p className={styles.subtitle}>Meet the team</p>
+      </header>
+
+      <section className={styles.grid} aria-label="Team members">
+        {team.map((member) => (
+          <TeamCard key={member.no} member={member} onOpen={setActiveMember} />
+        ))}
+      </section>
+
+      <footer className={styles.footer}>
+        <p>Wayfinder Kiosk</p>
+        <p>Developed by Team WAYFINDER</p>
+      </footer>
+
+      {activeMember && (
+        <MemberModal member={activeMember} onClose={() => setActiveMember(null)} />
+      )}
+    </main>
   );
 }
