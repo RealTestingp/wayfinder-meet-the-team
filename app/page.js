@@ -62,9 +62,9 @@ const team = [
     tag: "CLOUD / AI",
     photo: "/team/jenna_pf.jpg",
     blurb:
-      "Designed how the system communicated internally and with Azure, covering routing, infrastructure, and AI service.",
+      "Designed how the kiosk looked and felt, from its on-screen states to the physical enclosure it lives in.",
     bio:
-      "Designed how the system communicated internally and with Azure, covering routing, infrastructure, and AI service.",
+      "Designed how the kiosk looked and felt, from its on-screen states to the physical enclosure it lives in.\n\nI'm a software developer graduating from SAIT in August 2026, transitioning into tech after building a career in banking, following a background in the service industry. That path shaped how I approach problems today: with strong client-facing communication, attention to detail under pressure, and a practical sense of how systems need to actually work for the people using them.\n\nIn development, I bring solid technical fundamentals in frontend development with React, TypeScript, and Tailwind CSS, UI/UX design, cloud deployment on Azure, and CAD design for physical fabrication.\n\nOn the Wayfinder Kiosk — a voice-activated, multilingual wayfinding kiosk for large venues — I built the kiosk's frontend interface in Next.js and TypeScript, designing the animated states that show the kiosk idle, listening, thinking, and displaying a QR code, all styled to match the team's poster colour palette. I also designed the kiosk's physical enclosure from scratch for 3D printing, working through the full model including mic and speaker cutouts, cable routing, ventilation, and a mounting bracket for the display, built to fit within the print bed's size constraints.\n\nMy specialization is cloud infrastructure and applied AI, and this project was a chance to step outside that and work hands-on with interface and physical design instead. I'm looking to join a team where I can keep building on that range, alongside the cloud and AI work that's my core focus.",
     linkedin: "https://www.linkedin.com/in/jenna-hackett-673981161/",
     website: null,
   },
