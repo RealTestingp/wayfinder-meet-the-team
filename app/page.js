@@ -34,7 +34,7 @@ const team = [
     name: "Aurora Choban",
     role: "Frontend Developer",
     tag: "INTERFACE",
-    photo: "/team/aurora.jpg",
+    photo: "/team/aurora_pf.png",
     blurb:
       "Shaped what the archive looked and felt like for users, from the screens and search functionality to the overall day-to-day experience of the archive.",
     bio:
