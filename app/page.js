@@ -19,13 +19,12 @@ const team = [
   {
     no: "001",
     name: "Verity Boyd",
-    role: "Project Manager, Backend Developer",
-    tag: "DATABASE",
+    role: "Backend Developer",
+    tag: "PYTHON",
     photo: "/team/verity_pf.png",
     blurb:
-      "Kept the backend roadmap honest, tracking tickets, timelines, and making sure the pieces landed in the right order.",
-    bio:
-      "Kept the backend roadmap honest, tracking tickets, timelines, and making sure the pieces landed in the right order.\n\nI'm a software developer graduating from SAIT in August 2026, transitioning into tech after building a career across financial services, non-profit arts, and client-experience roles. That path shaped how I work today: with strong communication, collaboration, time-management, and stakeholder-focused problem-solving at the core.\n\nIn development, I bring solid technical fundamentals in object-oriented programming, front and backend development, relational databases, SQL, cloud computing, DevOps practices, IoT concepts, and modern AI workflows — including responsible AI and agentic AI. I'm especially interested in enterprise applications and building solutions that improve reliability, clarity, and the human experience overall.\n\nCurious, adaptable, and detail-driven, I'm excited to grow my career in environments where technology, teamwork, and thoughtful design come together to create meaningful impact.",
+      "Developed backend logic, integrated Vosk and Piper speech models, and added cloud logging for responsible AI review.",
+    bio: "On the Wayfinder Kiosk project, Verity developed backend features that power the kiosk's multilingual interactions. This included integrating local Vosk speech models on a Raspberry Pi, implementing the Python-based intent-processing workflow, mapping campus navigation data, and adding Azure cloud logging to support responsible AI review.\n\nVerity is a software developer graduating from SAIT in August 2026, transitioning into tech after building a career across financial services, non-profit arts, and client-experience roles. That path shaped her approach to work: with clear communication, strong collaboration, reliable time-management, and stakeholder-focused problem-solving at the core.\n\nIn development, she brings solid technical fundamentals in object-oriented programming, front and backend development, relational databases, SQL, cloud computing, DevOps practices, IoT concepts, and modern AI workflows — including responsible AI and agentic AI. She is especially interested in enterprise applications and building solutions that improve reliability, clarity, and the human experience overall.\n\nCurious, adaptable, and detail-driven, Verity is excited to grow her career in environments where technology, teamwork, and thoughtful design come together to create meaningful impact.",
     linkedin: "https://www.linkedin.com/in/verityb/",
     website: "https://verityboyd.vercel.app/",
   },
@@ -37,8 +36,7 @@ const team = [
     photo: "/team/aurora_pf.png",
     blurb:
       "Shaped what the archive looked and felt like for users, from the screens and search functionality to the overall day-to-day experience of the archive.",
-    bio:
-      "Shaped what the archive looked and felt like for users, from the screens and search functionality to the overall day-to-day experience of the archive.",
+    bio: "Shaped what the archive looked and felt like for users, from the screens and search functionality to the overall day-to-day experience of the archive.",
     linkedin: "https://www.linkedin.com/in/aurora-choban-818a2334a/",
     website: null,
   },
@@ -50,8 +48,7 @@ const team = [
     photo: "/team/dylan_pf.jpg",
     blurb:
       "Developed the gateway and Reports Service, implementing the necessary models, controllers, DTOs, and supporting backend components.",
-    bio:
-      "Developed the gateway and Reports Service, implementing the necessary models, controllers, DTOs, and supporting backend components.",
+    bio: "Developed the gateway and Reports Service, implementing the necessary models, controllers, DTOs, and supporting backend components.",
     linkedin: "https://www.linkedin.com/in/dylan-khuu/",
     website: null,
   },
@@ -63,8 +60,7 @@ const team = [
     photo: "/team/jenna_pf.jpg",
     blurb:
       "Designed how the kiosk looked and felt, from its on-screen states to the physical enclosure it lives in.",
-    bio:
-      "Designed how the kiosk looked and felt, from its on-screen states to the physical enclosure it lives in.\n\nI'm a software developer graduating from SAIT in August 2026, transitioning into tech after building a career in banking, following a background in the service industry. That path shaped how I approach problems today: with strong client-facing communication, attention to detail under pressure, and a practical sense of how systems need to actually work for the people using them.\n\nIn development, I bring solid technical fundamentals in frontend development with React, TypeScript, and Tailwind CSS, UI/UX design, cloud deployment on Azure, and CAD design for physical fabrication.\n\nOn the Wayfinder Kiosk — a voice-activated, multilingual wayfinding kiosk for large venues — I built the kiosk's frontend interface in Next.js and TypeScript, designing the animated states that show the kiosk idle, listening, thinking, and displaying a QR code, all styled to match the team's poster colour palette. I also designed the kiosk's physical enclosure from scratch for 3D printing, working through the full model including mic and speaker cutouts, cable routing, ventilation, and a mounting bracket for the display, built to fit within the print bed's size constraints.\n\nMy specialization is cloud infrastructure and applied AI, and this project was a chance to step outside that and work hands-on with interface and physical design instead. I'm looking to join a team where I can keep building on that range, alongside the cloud and AI work that's my core focus.",
+    bio: "Designed how the kiosk looked and felt, from its on-screen states to the physical enclosure it lives in.\n\nI'm a software developer graduating from SAIT in August 2026, transitioning into tech after building a career in banking, following a background in the service industry. That path shaped how I approach problems today: with strong client-facing communication, attention to detail under pressure, and a practical sense of how systems need to actually work for the people using them.\n\nIn development, I bring solid technical fundamentals in frontend development with React, TypeScript, and Tailwind CSS, UI/UX design, cloud deployment on Azure, and CAD design for physical fabrication.\n\nOn the Wayfinder Kiosk — a voice-activated, multilingual wayfinding kiosk for large venues — I built the kiosk's frontend interface in Next.js and TypeScript, designing the animated states that show the kiosk idle, listening, thinking, and displaying a QR code, all styled to match the team's poster colour palette. I also designed the kiosk's physical enclosure from scratch for 3D printing, working through the full model including mic and speaker cutouts, cable routing, ventilation, and a mounting bracket for the display, built to fit within the print bed's size constraints.\n\nMy specialization is cloud infrastructure and applied AI, and this project was a chance to step outside that and work hands-on with interface and physical design instead. I'm looking to join a team where I can keep building on that range, alongside the cloud and AI work that's my core focus.",
     linkedin: "https://www.linkedin.com/in/jenna-hackett-673981161/",
     website: null,
   },
@@ -160,11 +156,7 @@ function MemberModal({ member, onClose }) {
   }, [onClose]);
 
   return (
-    <div
-      className={styles.modalBackdrop}
-      onClick={onClose}
-      role="presentation"
-    >
+    <div className={styles.modalBackdrop} onClick={onClose} role="presentation">
       <div
         className={styles.modal}
         role="dialog"
@@ -255,7 +247,10 @@ export default function Page() {
       </footer>
 
       {activeMember && (
-        <MemberModal member={activeMember} onClose={() => setActiveMember(null)} />
+        <MemberModal
+          member={activeMember}
+          onClose={() => setActiveMember(null)}
+        />
       )}
     </main>
   );
