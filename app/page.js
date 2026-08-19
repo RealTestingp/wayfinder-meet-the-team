@@ -35,8 +35,8 @@ const team = [
     tag: "INTERFACE",
     photo: "/team/aurora_pf.png",
     blurb:
-      "Shaped what the archive looked and felt like for users, from the screens and search functionality to the overall day-to-day experience of the archive.",
-    bio: "Shaped what the archive looked and felt like for users, from the screens and search functionality to the overall day-to-day experience of the archive.",
+      "Developed the Raspberry Pi integration, connecting hardware peripherals with the kiosk's voice and navigation systems.",
+    bio: "Developed the Raspberry Pi integration, connecting hardware peripherals with the kiosk's voice and navigation systems.\n\nI'm a software developer graduating from SAIT in August 2026, transitioning into tech after building a career in insurance. That work developed the strengths I rely on now: precision with complex information, clear communication with clients and stakeholders, and the judgment to translate detailed requirements into something people can act on with confidence.\n\nIn development, I bring solid technical fundamentals in object-oriented programming, front and backend development, relational databases and SQL, cloud computing on Azure, containerization with Docker, DevOps practices, version control and agile delivery, and modern AI workflows including retrieval-augmented generation.",
     linkedin: "https://www.linkedin.com/in/aurora-choban-818a2334a/",
     website: null,
   },
@@ -47,8 +47,8 @@ const team = [
     tag: "SERVICES",
     photo: "/team/dylan_pf.jpg",
     blurb:
-      "Developed the gateway and Reports Service, implementing the necessary models, controllers, DTOs, and supporting backend components.",
-    bio: "Developed the gateway and Reports Service, implementing the necessary models, controllers, DTOs, and supporting backend components.",
+      "Integrated the Raspberry Pi, microphone, speaker, and kiosk hardware to bring the physical and software components together.",
+    bio: "Integrated the Raspberry Pi, microphone, speaker, and kiosk hardware to bring the physical and software components together.\n\nOn the Wayfinder Kiosk project, I focused on the IoT and hardware integration that connects the physical kiosk to its software. This included configuring the Raspberry Pi as the central device, connecting and working with the microphone and speaker, and ensuring the hardware could support the kiosk's voice-activated interactions. I also worked on connecting the device-side components with the rest of the system so that user input could be captured, processed, and returned through the kiosk.\n\nBefore moving into development, I worked in accounting and financial operations, which gave me a solid grounding in accuracy, process, and translating real-world business requirements into technical solutions, which is something I now bring directly into how I approach backend and system design.",
     linkedin: "https://www.linkedin.com/in/dylan-khuu/",
     website: null,
   },
